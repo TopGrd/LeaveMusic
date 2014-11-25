@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/player.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/muplayer/dist/player.js"></script>
+    <script src="bower_components/requirejs/require.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="background" >
+</div>
+<div class="left leftbg1"></div>
+<div class="player">
+    <div class="mask">
+        <div class="ml img-circle">
+            <div class="cd-center img-circle">
+                <div class="ctrl" ></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="right rightbg1"></div>
+<div class="modebg">
+    <div class="mode mode-list"></div>
+</div>
+<input id="range" type="range" min="0" max="10" value="5" onchange="volume(this.value)">
+</body>
+<script>
+    $(document).ready(function () {
+        $(function() {
+            $( "#slider" ).slider();
+        });
+        var wi =$(window).width();
+        $('#background').css('width',wi);
+
+        var hi=$(window).height();
+        $('#background').css('height',hi);
+    });
+    require.config({
+        paths:{
+            muplayer: 'bower_components/muplayer/dist'
+        }
+    });
+    require([
+        'muplayer/player'
+    ],function(Player) {
+        var player = new Player({
+                    baseDir: 'bower_components/muplayer/dist/'
+                }),
+                $player = $('.player'),
+                $ctrlBtn =$player.find('.ctrl'),
+                $prevBtn = $('.left'),
+                $nextBtn = $('.right'),
+                $modeBtn = $('.mode')
+/*                handleTimeupdate = function () {
+                    var pos = player.curPos(),
+                            duration = player.duration();
+                    $progress.slider('option', 'value', duration ? pos / duration * 1000 :0);
+
+                }; */
+        player.add([
+            'music/dm.mp3',
+            'music/onlyyou.mp3'
+        ]);
+        player.play();
+        $prevBtn.click(function () {
+            if($prevBtn.hasClass('leftbg1')){
+                $prevBtn.removeClass('leftbg1').addClass('leftbg2');
+
+            }
+            player.prev();
+            setTimeout(function(){
+                $prevBtn.removeClass('leftbg2').addClass('leftbg1');
+            },200);
+
+            /*$prevBtn.removeClass('leftbg2').addClass('leftbg1');*/
+        });
+        $nextBtn.click(function(){
+            if($nextBtn.hasClass('rightbg1')){
+                $nextBtn.removeClass('rightbg1').addClass('rightbg2');
+            }
+            player.next();
+            setTimeout(function(){
+                $nextBtn.removeClass('rightbg2').addClass('rightbg1');
+            },200);
+        });
+
+        $('.ctrl').hover(function () {
+            $('.ctrl').addClass("ctrl-p");
+        }, function () {
+            $('.ctrl').removeClass("ctrl-p");
+        });
+        $ctrlBtn.click(function () {
+            if ($ctrlBtn.hasClass('ctrl-s')) {
+                $ctrlBtn.removeClass('ctrl-s').addClass('ctrl-p');
+                player.play();
+                $('.ml').css('animation-play-state','paused').css('-webkit-animation-play-state','running');
+
+
+            } else if ($ctrlBtn.hasClass('ctrl-p')) {
+                $ctrlBtn.removeClass('ctrl-p').addClass('ctrl-s');
+                player.pause();
+                $('.ml').css('animation-play-state','paused').css('-webkit-animation-play-state','paused');
+            }
+        });
+        var modes = ['loop', 'list-random'],
+                modeIndex = 0;
+        $modeBtn.click(function () {
+            var mode = modes[++modeIndex % 2];
+            player.setMode(mode);
+            if (mode === 'loop') {
+                $modeBtn.removeClass('mode-list').addClass('mode-loop');
+            } else {
+                $modeBtn.removeClass('mode-loop').addClass('mode-list');
+            }
+        });
+
+    })
+
+</script>
+</html>

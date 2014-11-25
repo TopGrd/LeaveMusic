@@ -1,0 +1,157 @@
+body{
+
+    background-size: 100% 100%;
+   /* filter: blur(60px);
+    -webkit-filter: blur(60px);*/
+}
+div.ml
+{
+    animation:myfirst 5s;
+    -moz-animation:myfirst 5s; /* Firefox */
+    -webkit-animation:myfirst 5s; /* Safari and Chrome */
+    -o-animation:myfirst 5s; /* Opera */
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+    animation-timing-function:linear;
+    -webkit-animation-timing-function:linear;
+}
+
+@keyframes myfirst
+{
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+
+    from {-moz-transform:rotate(0deg);}
+    to {-moz-transform:rotate(360deg);}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+    from {-webkit-transform:rotate(0deg);}
+    to       {-webkit-transform:rotate(360deg);}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    from {-o-transform:rotate(0deg);}
+    to {-o-transform:rotate(360deg);}
+}
+.ml{
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    top:64px;
+    position: relative;
+    background:#e1e1e1 100% 100%;
+    background: url("../img/t1.jpg");
+    border: 2px solid #9d9d9d;
+    background-size: cover;
+}
+.player{
+    width: 430px;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+#background{
+    background:url("../img/t1.jpg"),no-repeat;
+    background-size: cover;
+    filter: blur(65px);
+    -webkit-filter:blur(65px);
+    -o-filter:blur(65px);
+    position: absolute;
+}
+.cd-center{
+    background: url(../img/playCtl.png) no-repeat scroll -200px 0;
+    width: 69px;
+    height: 69px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -34px;
+    margin-top: -34px;
+    z-index: 1;
+    -webkit-transition: opacity 0.3s ease-out;
+    transition:opacity 0.3s ease-out ;
+    -moz-transition: opacity 0.3s ease-out;
+    -o-transition: opacity 0.3s ease-out;
+}
+.mask{
+    width: 430px;
+    height: 430px;
+    background: url("../img/playerMask.png") no-repeat scroll;
+    margin: 0 auto;}
+.ctrl{
+    display: block;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    cursor: pointer;
+
+    opacity: 0.6;
+}
+.ctrl-p{
+    background: url("../img/playCtl.png");
+    background-position:-100px 0;
+}
+.ctrl-s{
+    background: url("../img/playCtl.png");
+    background-position:0px 0;
+}
+.left{
+    width: 104px;
+    height: 104px;
+    display: inline-block;
+    position: absolute;
+    margin-top: 250px;
+    left: 230px;
+}
+.right{
+    width: 104px;
+    height: 104px;
+    background: url("../img/right.png") no-repeat;
+    display: inline-block;
+    position: absolute;
+    right: 230px;
+    margin-top: -280px;
+}
+.leftbg1{
+    background: url("../img/left.png") no-repeat;
+}
+.rightbg1{
+    background: url("../img/right.png") no-repeat;
+
+}
+.leftbg2{
+    background: url("../img/left-2.png") no-repeat;
+
+}
+.rightbg2{
+    background: url("../img/right-2.png") no-repeat;
+}
+.modebg{
+    width: 100px;
+    height: 100px;
+    display: block;
+    background: url(../img/playerIcons.png) no-repeat scroll 50% 50%;
+    background-position: -400px -100px;
+    margin: -35px auto;
+    position: relative;
+}
+.mode{
+    background: url(../img/playerIcons.png) no-repeat scroll 50% 50%;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    display: block;
+}
+.mode-loop{
+    background-position: -100px 0px;
+}
+.mode-list{
+    background-position: -100px -100px;
+}
