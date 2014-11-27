@@ -24,16 +24,13 @@
     </div>
 </div>
 <div class="right rightbg1"></div>
+<input id="range" type="range" min="0" max="100" value="50" onchange="setValue()" />
 <div class="modebg">
     <div class="mode mode-list"></div>
 </div>
-<input id="range" type="range" min="0" max="10" value="5" onchange="volume(this.value)">
 </body>
 <script>
     $(document).ready(function () {
-        $(function() {
-            $( "#slider" ).slider();
-        });
         var wi =$(window).width();
         $('#background').css('width',wi);
 
@@ -55,7 +52,8 @@
                 $ctrlBtn =$player.find('.ctrl'),
                 $prevBtn = $('.left'),
                 $nextBtn = $('.right'),
-                $modeBtn = $('.mode')
+                $modeBtn = $('.mode'),
+                $range = $('#range')
 /*                handleTimeupdate = function () {
                     var pos = player.curPos(),
                             duration = player.duration();
@@ -75,7 +73,7 @@
             player.prev();
             setTimeout(function(){
                 $prevBtn.removeClass('leftbg2').addClass('leftbg1');
-            },200);
+            },100);
 
             /*$prevBtn.removeClass('leftbg2').addClass('leftbg1');*/
         });
@@ -86,7 +84,7 @@
             player.next();
             setTimeout(function(){
                 $nextBtn.removeClass('rightbg2').addClass('rightbg1');
-            },200);
+            },100);
         });
 
         $('.ctrl').hover(function () {
@@ -117,6 +115,18 @@
             } else {
                 $modeBtn.removeClass('mode-loop').addClass('mode-list');
             }
+        });
+
+        $range.mouseup(function setValue(){
+            var value =$range.val();
+            player.setVolume(value);
+            $range.val(value);
+            if(value==0){
+                player.setMute(true);
+            }else{
+                player.setMute(false);
+            }
+
         });
 
     })
