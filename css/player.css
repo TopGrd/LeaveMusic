@@ -1,5 +1,5 @@
 body{
-
+    min-width: 1366px;
     background-size: 100% 100%;
    /* filter: blur(60px);
     -webkit-filter: blur(60px);*/
@@ -37,7 +37,7 @@ div.ml
     margin: 0 auto;
     padding-top: 100px;
 }
-#background{
+#back{
     background:url("../img/t1.jpg"),no-repeat;
     background-size: cover;
     filter: blur(65px);
@@ -93,9 +93,9 @@ div.ml
 .right{
     width: 104px;
     height: 104px;
+    position: absolute;
     background: url("../img/right.png") no-repeat;
     display: inline-block;
-    position: absolute;
     right: 230px;
     margin-top: -280px;
 }
