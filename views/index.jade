@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div#back
+  div.left.leftbg1
+  div.player
+    div.mask
+      div.ml.img-circle
+        div.cd-center.img-circle
+          div.ctrl
+  div.right.rightbg1
+  input#range(type="range" min="0" max="100" value="50" onchange="setValue()")
+  div.modebg
+    div.mode.mode-list
+  script(src='/javascripts/jquery.min.js')
+  script(src='/javascripts/player.js')
+  script(src='/javascripts/require.js')
+  script(src='/javascripts/myplayer.js')
+  script.
+    window.urls = !{JSON.stringify(urls)};
+    $(document).ready(function () {
+      var wi = $(window).width();
+      $('#back').css('width', wi);
+      var hi = $(window).height();
+      $('#back').css('height', hi);
+    });
+
