@@ -13,7 +13,6 @@ var options = {
 /* GET home page. */
 /**
  * get Music
- * @param  {[type]} res){                 res.on('data',function(chunck){    data + [description]
  * @return {[type]}        [description]
  */
 var request =http.get(options,function(res){
